@@ -2,8 +2,6 @@ import './sass/main.scss';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
-import { getPhotoByName } from './components/getPhotoByName';
-
 const searchForm = document.querySelector('#search-form');
 
 const BASE_URL = 'https://pixabay.com/api/';
@@ -20,3 +18,6 @@ function onSubmitButtonClick(evt) {
     console.log(getPhotoByName(searchQuery));
 }
 
+export function getPhotoByName(searchQuery) {
+   return axios.get(`${BASE_URL}/?key=${API_KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true`)
+}
