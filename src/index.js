@@ -24,9 +24,9 @@ function getPhotoByName(searchQuery) {
 }
 
 function renderGallery(images) {
-    const markup = images.data.hits.map(({webformatURL, tags, likes, views, comments, downloads }) => {
+    imagesGallery.innerHTML = images.data.hits.map(({webformatURL, tags, likes, views, comments, downloads }) => {
         return `<div class="photo-card">
-  <img src="${webformatURL}" alt="${tags}" loading="lazy" />
+  <img src="${webformatURL}" alt="${tags}" loading="lazy" class="image"/>
   <div class="info">
     <p class="info-item">
       <b>Likes ${likes}</b>
@@ -44,6 +44,5 @@ function renderGallery(images) {
 </div>
 `
     }).join('');
-    imagesGallery.innerHTML = markup;
-    
+        
 }

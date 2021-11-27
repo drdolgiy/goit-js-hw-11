@@ -1,6 +1,9 @@
 .header {
-    width: 100%;
     position: fixed;
-    height: 50px;
+    top: 0;
+    width: 100%;
+    display: flex;
+
+   justify-content: center;
     background-color: darkblue;
 }
