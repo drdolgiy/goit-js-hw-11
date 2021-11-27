@@ -24,21 +24,21 @@ function getPhotoByName(searchQuery) {
 }
 
 function renderGallery(images) {
-    const markup = images.data.hits.map((images) => {
+    const markup = images.data.hits.map(({webformatURL, tags, likes, views, comments, downloads }) => {
         return `<div class="photo-card">
-  <img src="${images.webformatURL}" alt="${images.tags}" loading="lazy" />
+  <img src="${webformatURL}" alt="${tags}" loading="lazy" />
   <div class="info">
     <p class="info-item">
-      <b>Likes: ${images.likes}</b>
+      <b>Likes ${likes}</b>
     </p>
     <p class="info-item">
-      <b>Views: ${images.views}</b>
+      <b>Views ${views}</b>
     </p>
     <p class="info-item">
-      <b>Comments: ${images.comments}</b>
+      <b>Comments ${comments}</b>
     </p>
     <p class="info-item">
-      <b>Downloads: ${images.downloads}</b>
+      <b>Downloads ${downloads}</b>
     </p>
   </div>
 </div>
