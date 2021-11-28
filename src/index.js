@@ -34,10 +34,18 @@ function onSubmitButtonClick(evt) {
 
     clearGallery();
     
-    apiService.query = searchForm.elements.searchQuery.value;
+    apiService.query = evt.currentTarget.elements.searchQuery.value;
+
+     if (apiService.query === '') {
+     return   Notiflix.Notify.info('enter your search query!')
+        
+    }
     apiService.resetPage();
     apiService.getPhotoByName().then(renderGallery);
 
+    loadMoreBtn.classList.remove('is-hidden');
+
+   
 
 }
 
