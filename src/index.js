@@ -56,9 +56,18 @@ const loadMoreBtn = new LoadMoreBtn({
 
 // loadMoreBtn.addEventListener('click', onLoadClick)
 
-async function onLoadClick() {
+async  function onLoadClick() {
     
- await   apiService.getPhotoByName().then(renderGallery);
+     apiService.getPhotoByName().then(renderGallery);
+     
+       const getValue = await apiService.getPhotoByName();
+    const hitsLength = getValue.data.hits.length;
+
+    if (hitsLength < 40) {
+        loadMoreBtn.hide();
+        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.")
+        
+    }
     
 }
 
@@ -73,9 +82,7 @@ async function onSearch(evt) {
     
     apiService.query = evt.currentTarget.elements.searchQuery.value.trim();
 
-    if (apiService.query === '') {
-        loadMoreBtn.hide(); 
-
+     if (apiService.query === '') {
      return   Notiflix.Notify.info('enter your search query!')
         
     }
@@ -86,14 +93,10 @@ async function onSearch(evt) {
     const hitsLength = getValue.data.hits.length;
 
     if (hitsLength < 1) {
-        Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
- 
+        loadMoreBtn.hide();
+        Notiflix.Notify.info("Sorry, there are no images matching your search query. Please try again.");
         return
         
-    } else if (hitsLength < 40) {
-        Notiflix.Notify.info("We're sorry, but you've reached the end of search results");
-        loadMoreBtn.hide(); 
-        return
     }
 
     loadMoreBtn.show(); 
