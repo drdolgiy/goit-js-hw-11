@@ -94,7 +94,7 @@ async function onSearch(evt) {
 
     if (hitsLength < 1) {
         loadMoreBtn.hide();
-        Notiflix.Notify.warning("Sorry, there are no images matching your search query. Please try again.");
+        Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
         return
         
     }
