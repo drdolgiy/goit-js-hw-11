@@ -73,7 +73,9 @@ async function onSearch(evt) {
     
     apiService.query = evt.currentTarget.elements.searchQuery.value.trim();
 
-     if (apiService.query === '') {
+    if (apiService.query === '') {
+        loadMoreBtn.hide(); 
+
      return   Notiflix.Notify.info('enter your search query!')
         
     }
