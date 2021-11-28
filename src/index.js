@@ -83,8 +83,9 @@ async function onSearch(evt) {
     apiService.query = evt.currentTarget.elements.searchQuery.value.trim();
 
      if (apiService.query === '') {
-     return   Notiflix.Notify.info('enter your search query!')
-        
+        Notiflix.Notify.info('enter your search query!')
+         loadMoreBtn.hide();
+         return
     }
     apiService.resetPage();
     apiService.getPhotoByName().then(renderGallery);
